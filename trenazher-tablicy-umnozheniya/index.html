@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://math-calc.github.io/trenazher-tablicy-umnozheniya/">
+  <title>Тренажер таблицы умножения онлайн - игра школьников и детей бесплатно</title>
+  <meta name="description" content="Бесплатный онлайн тренажер таблицы умножения для детей. Интерактивная игра с ответами помогает выучить умножение от 2 до 10 школникам 2, 3, 4 класса. Проверка знаний и статистика результатов.">
+  <link rel="icon" href="https://math-calc.github.io/favicon.svg" type="image/svg+xml">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Тренажер таблицы умножения",
+    "description": "Бесплатный онлайн тренажер таблицы умножения для детей. Интерактивная игра с ответами помогает выучить умножение от 2 до 10 школникам 2, 3, 4 класса. Проверка знаний и статистика результатов.",
+    "url": "https://math-calc.github.io/trenazher-tablicy-umnozheniya/",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "RUB"
+    }
+  }
+  </script>
+  <style>
+    .answer-btn {
+      transition: all 0.2s;
+    }
+    .answer-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .correct {
+      background-color: #10b981 !important;
+      color: white !important;
+    }
+    .incorrect {
+      background-color: #ef4444 !important;
+      color: white !important;
+    }
+    .settings-btn {
+      transition: all 0.2s;
+    }
+    .settings-btn:hover {
+      background-color: #3b82f6;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900 font-sans min-h-screen flex flex-col">
+  <header class="flex items-center justify-between py-2 px-4 border-b border-gray-200">
+    <a href="https://math-calc.github.io/" class="block">
+      <img src="https://math-calc.github.io/logo.svg" alt="Логотип" class="w-12 h-12">
+    </a>
+  </header>
+  
+  <main class="flex-grow max-w-3xl mx-auto p-4 space-y-6 w-full">
+    <nav class="text-sm text-gray-600" aria-label="Хлебные крошки" itemscope itemtype="https://schema.org/BreadcrumbList">
+      <ol class="flex space-x-2">
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="flex items-center">
+          <a href="https://math-calc.github.io/" itemprop="item" class="text-blue-600 hover:underline">
+            <span itemprop="name">Главная</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <span class="mx-2">/</span>
+        </li>
+        <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem" class="flex items-center">
+          <span itemprop="name" class="text-gray-500">Тренажер таблицы умножения</span>
+          <meta itemprop="position" content="2" />
+        </li>
+      </ol>
+    </nav>
+
+    <article itemscope itemtype="https://schema.org/Article">
+      <h1 itemprop="headline" class="text-3xl font-bold mb-4 text-center">Тренажер таблицы умножения</h1>
+      
+      <section class="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-300 p-6 rounded-lg shadow-lg mb-6">
+        <div class="max-w-md mx-auto">
+          
+          <div id="settingsPanel" class="mb-4 hidden">
+            <h2 class="text-lg font-semibold mb-3 text-center">Настройки тренажера</h2>
+            <div class="bg-white p-4 rounded-lg shadow">
+              <p class="text-sm text-gray-600 mb-2">Выберите числа для тренировки:</p>
+              <div class="grid grid-cols-5 gap-2 mb-3">
+                <button onclick="selectNumber('all')" id="btn-all" class="px-3 py-2 bg-blue-500 text-white rounded font-semibold text-sm">Вся таблица</button>
+                <button onclick="toggleNumber(2)" id="btn-2" class="px-3 py-2 bg-gray-200 rounded font-semibold text-sm">2</button>
+                <button onclick="toggleNumber(3)" id="btn-3" class="px-3 py-2 bg-gray-200 rounded font-semibold text-sm">3</button>
+                <button onclick="toggleNumber(4)" id="btn-4" class="px-3 py-2 bg-gray-200 rounded font-semibold text-sm">4</button>
+                <button onclick="toggleNumber(5)" id="btn-5" class="px-3 py-2 bg-gray-200 rounded font-semibold text-sm">5</button>
+                <button onclick="toggleNumber(6)" id="btn-6" class="px-3 py-2 bg-gray-200 rounded font-semibold text-sm">6</button>
+                <button onclick="toggleNumber(7)" id="btn-7" class="px-3 py-2 bg-gray-200 rounded font-semibold text-sm">7</button>
+                <button onclick="toggleNumber(8)" id="btn-8" class="px-3 py-2 bg-gray-200 rounded font-semibold text-sm">8</button>
+                <button onclick="toggleNumber(9)" id="btn-9" class="px-3 py-2 bg-gray-200 rounded font-semibold text-sm">9</button>
+                <button onclick="toggleNumber(10)" id="btn-10" class="px-3 py-2 bg-gray-200 rounded font-semibold text-sm">10</button>
+              </div>
+              <button onclick="closeSettings()" class="w-full px-4 py-2 bg-green-500 text-white rounded font-semibold hover:bg-green-600">Начать тренировку</button>
+            </div>
+          </div>
+
+          <div id="gamePanel">
+            <div class="flex justify-between items-center mb-4">
+              <div class="text-sm font-semibold text-gray-700">
+                Вопрос <span id="questionNumber">1</span> из 10
+              </div>
+              <button onclick="openSettings()" class="settings-btn px-3 py-1 bg-blue-500 text-white rounded text-sm font-semibold">⚙ Настройки</button>
+            </div>
+
+            <div id="questionBlock">
+              <div class="bg-white p-6 rounded-lg shadow-md mb-4">
+                <p class="text-4xl font-bold text-center mb-6" id="question">2 × 3 = ?</p>
+                <div class="grid grid-cols-2 gap-3">
+                  <button onclick="checkAnswer(0)" id="answer-0" class="answer-btn px-6 py-4 bg-white border-2 border-blue-300 rounded-lg text-2xl font-semibold hover:bg-blue-50">6</button>
+                  <button onclick="checkAnswer(1)" id="answer-1" class="answer-btn px-6 py-4 bg-white border-2 border-blue-300 rounded-lg text-2xl font-semibold hover:bg-blue-50">8</button>
+                  <button onclick="checkAnswer(2)" id="answer-2" class="answer-btn px-6 py-4 bg-white border-2 border-blue-300 rounded-lg text-2xl font-semibold hover:bg-blue-50">5</button>
+                  <button onclick="checkAnswer(3)" id="answer-3" class="answer-btn px-6 py-4 bg-white border-2 border-blue-300 rounded-lg text-2xl font-semibold hover:bg-blue-50">7</button>
+                </div>
+              </div>
+              <div id="feedback" class="text-center font-semibold text-lg mb-2 h-6"></div>
+            </div>
+
+            <div id="resultBlock" class="hidden">
+              <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                <h3 class="text-2xl font-bold mb-4">Тренировка завершена!</h3>
+                <p class="text-5xl font-bold mb-4" id="finalScore">8/10</p>
+                <p class="text-xl mb-6" id="resultMessage">Отличный результат!</p>
+                <button onclick="restartGame()" class="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold text-lg hover:bg-blue-600">Начать заново</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-gray-50 p-4 rounded-lg shadow mb-6">
+        <h2 class="text-xl font-semibold mb-3">История результатов</h2>
+        <div id="historyList" class="space-y-2">
+          <p class="text-gray-500 text-sm">История тренировок появится здесь после прохождения</p>
+        </div>
+      </section>
+
+      <section itemprop="articleBody" class="mb-6">
+        <h2 class="text-2xl font-bold mb-3">Как быстро выучить таблицу умножения</h2>
+        <p class="mb-3 text-gray-700 leading-relaxed">
+          Таблица умножения - это основа математики, которую должен знать каждый школьник. Наш онлайн тренажер помогает детям учить и запоминать умножение в игровой форме. Регулярные занятия по 10-15 минут в день дают заметный результат уже через неделю.
+        </p>
+        <p class="mb-3 text-gray-700 leading-relaxed">
+          Программа работает по простому принципу: ребенок видит пример умножения и выбирает правильный ответ из четырех вариантов. Сразу показывается результат - верно решил или допустил ошибку. Такая мгновенная обратная связь помогает лучше запомнить примеры.
+        </p>
+        
+        <h2 class="text-xl font-semibold mb-2 mt-4">Преимущества нашего тренажера</h2>
+        <p class="mb-3 text-gray-700 leading-relaxed">
+          Игра подходит для учеников начальных классов, которые только начинают изучать умножение. Можно выбрать тренировку на конкретное число от 2 до 10 или включить режим всей таблицы для комплексной проверки знаний. Система запоминает все результаты и показывает статистику - сколько правильных ответов было дано в каждой попытке.
+        </p>
+        <p class="mb-3 text-gray-700 leading-relaxed">
+          Родители могут отслеживать прогресс своего ребенка по истории результатов. Записывается дата, время и количество верных ответов из десяти вопросов. Это позволяет увидеть динамику обучения и понять, какие примеры вызывают затруднения.
+        </p>
+
+        <h3 class="text-xl font-semibold mb-2 mt-4">Методика обучения умножению</h3>
+        <p class="mb-3 text-gray-700 leading-relaxed">
+          Лучший способ запомнить таблицу - это многократное повторение. Тренажер генерирует случайные примеры, поэтому каждая тренировка уникальна. Ребенок не может просто запомнить последовательность ответов, ему нужно действительно считать и думать.
+        </p>
+        <p class="mb-3 text-gray-700 leading-relaxed">
+          Начинать стоит с простых чисел - двойки и тройки. После того как ученик уверенно решает эти примеры, можно переходить к более сложным: умножению на 6, 7, 8 и 9. Самым трудным обычно считается умножение на 7 и 8, поэтому им нужно уделить больше внимания.
+        </p>
+
+        <h3 class="text-xl font-semibold mb-2 mt-4">Советы для быстрого запоминания</h3>
+        <p class="mb-3 text-gray-700 leading-relaxed">
+          Занимайтесь регулярно, но короткими сессиями. Лучше решить 10 примеров каждый день, чем один раз просидеть час. Мозг лучше усваивает информацию при систематических повторениях. Используйте разные форматы: сначала потренируйтесь на конкретном числе, затем проверьте знания во всей таблице.
+        </p>
+        <p class="mb-3 text-gray-700 leading-relaxed">
+          Не ругайте ребенка за ошибки. Это нормальная часть процесса обучения. Наоборот, хвалите за правильные ответы и отмечайте прогресс. Когда школьник видит свои улучшающиеся результаты в истории, это мотивирует продолжать занятия.
+        </p>
+
+        <h3 class="text-xl font-semibold mb-2 mt-4">Для кого подходит тренажер</h3>
+        <p class="mb-3 text-gray-700 leading-relaxed">
+          Программа рассчитана на детей 2-4 классов, но пригодится и тем, кто хочет освежить знания. Интерфейс простой и понятный - даже первоклассник разберется без помощи взрослых. Все работает в браузере, ничего устанавливать не нужно. Заниматься можно с компьютера, планшета или телефона.
+        </p>
+        <p class="mb-3 text-gray-700 leading-relaxed">
+          Тренажер полностью бесплатный. Мы создали его для того, чтобы помочь детям и родителям в обучении математике. Результаты сохраняются локально в браузере, никакая информация не отправляется на сервер.
+        </p>
+      </section>
+
+    </article>
+  </main>
+
+  <footer class="bg-gray-100 border-t border-gray-200 p-4 text-center text-gray-600 text-sm space-x-4 select-none">
+    <a href="https://math-calc.github.io/contacts/" class="hover:text-gray-900">Контакты</a>
+    <a href="https://math-calc.github.io/about/" class="hover:text-gray-900">О нас</a>
+    <a href="https://math-calc.github.io/privacy/" class="hover:text-gray-900">Политика конфиденциальности</a>
+    <p class="mt-2 text-sm text-gray-500">
+      Все математические примеры проверены и соответствуют школьной программе начальных классов.
+    </p>
+  </footer>
+
+  <script>
+    let currentQuestion = 0;
+    let correctAnswers = 0;
+    let questions = [];
+    let selectedNumbers = [];
+    let correctIndex = 0;
+
+    function getCookie(name) {
+      const value = `; ${document.cookie}`;
+      const parts = value.split(`; ${name}=`);
+      if (parts.length === 2) return parts.pop().split(';').shift();
+      return null;
+    }
+
+    function setCookie(name, value, days) {
+      const date = new Date();
+      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+      const expires = `expires=${date.toUTCString()}`;
+      document.cookie = `${name}=${value};${expires};path=/`;
+    }
+
+    function loadHistory() {
+      const history = getCookie('multiplicationHistory');
+      if (history) {
+        try {
+          const historyArray = JSON.parse(decodeURIComponent(history));
+          displayHistory(historyArray);
+        } catch (e) {
+          console.error('Error loading history');
+        }
+      }
+    }
+
+    function saveResult(correct, total) {
+      const now = new Date();
+      const dateStr = `${now.getDate()} ${getMonthName(now.getMonth())} в ${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}`;
+      
+      const history = getCookie('multiplicationHistory');
+      let historyArray = [];
+      
+      if (history) {
+        try {
+          historyArray = JSON.parse(decodeURIComponent(history));
+        } catch (e) {
+          historyArray = [];
+        }
+      }
+      
+      historyArray.unshift({
+        date: dateStr,
+        correct: correct,
+        total: total
+      });
+      
+      if (historyArray.length > 10) {
+        historyArray = historyArray.slice(0, 10);
+      }
+      
+      setCookie('multiplicationHistory', encodeURIComponent(JSON.stringify(historyArray)), 365);
+      displayHistory(historyArray);
+    }
+
+    function getMonthName(month) {
+      const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+      return months[month];
+    }
+
+    function displayHistory(historyArray) {
+      const historyList = document.getElementById('historyList');
+      if (historyArray.length === 0) {
+        historyList.innerHTML = '<p class="text-gray-500 text-sm">История тренировок появится здесь после прохождения</p>';
+        return;
+      }
+      
+      historyList.innerHTML = historyArray.map(item => 
+        `<div class="bg-white p-3 rounded shadow-sm border border-gray-200">
+          <span class="text-sm text-gray-600">${item.date}</span>
+          <span class="float-right font-semibold ${item.correct >= 7 ? 'text-green-600' : 'text-orange-600'}">${item.correct} из ${item.total}</span>
+        </div>`
+      ).join('');
+    }
+
+    function toggleNumber(num) {
+      const index = selectedNumbers.indexOf(num);
+      
+      if (index > -1) {
+        selectedNumbers.splice(index, 1);
+        document.getElementById(`btn-${num}`).className = 'px-3 py-2 bg-gray-200 rounded font-semibold text-sm';
+      } else {
+        selectedNumbers.push(num);
+        document.getElementById(`btn-${num}`).className = 'px-3 py-2 bg-blue-500 text-white rounded font-semibold text-sm';
+      }
+      
+      document.getElementById('btn-all').className = 'px-3 py-2 bg-gray-200 rounded font-semibold text-sm';
+      
+      if (selectedNumbers.length === 0) {
+        selectNumber('all');
+      }
+    }
+
+    function selectNumber(mode) {
+      if (mode === 'all') {
+        selectedNumbers = [];
+        for (let i = 2; i <= 10; i++) {
+          document.getElementById(`btn-${i}`).className = 'px-3 py-2 bg-gray-200 rounded font-semibold text-sm';
+        }
+        document.getElementById('btn-all').className = 'px-3 py-2 bg-blue-500 text-white rounded font-semibold text-sm';
+      }
+    }
+
+    function generateQuestions() {
+      questions = [];
+      for (let i = 0; i < 10; i++) {
+        let num1, num2;
+        
+        if (selectedNumbers.length === 0) {
+          num1 = Math.floor(Math.random() * 9) + 2;
+          num2 = Math.floor(Math.random() * 9) + 2;
+        } else {
+          const randomSelected = selectedNumbers[Math.floor(Math.random() * selectedNumbers.length)];
+          num1 = randomSelected;
+          num2 = Math.floor(Math.random() * 9) + 2;
+          if (Math.random() > 0.5) {
+            [num1, num2] = [num2, num1];
+          }
+        }
+        
+        const correctAnswer = num1 * num2;
+        const answers = generateAnswers(correctAnswer);
+        
+        questions.push({
+          num1: num1,
+          num2: num2,
+          correctAnswer: correctAnswer,
+          answers: answers
+        });
+      }
+    }
+
+    function generateAnswers(correct) {
+      const answers = [correct];
+      const used = new Set([correct]);
+      
+      while (answers.length < 4) {
+        const offset = Math.floor(Math.random() * 20) - 10;
+        let wrong = correct + offset;
+        
+        if (wrong > 0 && !used.has(wrong)) {
+          answers.push(wrong);
+          used.add(wrong);
+        }
+      }
+      
+      for (let i = answers.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [answers[i], answers[j]] = [answers[j], answers[i]];
+      }
+      
+      return answers;
+    }
+
+    function showQuestion() {
+      const q = questions[currentQuestion];
+      correctIndex = q.answers.indexOf(q.correctAnswer);
+      
+      document.getElementById('questionNumber').textContent = currentQuestion + 1;
+      document.getElementById('question').textContent = `${q.num1} × ${q.num2} = ?`;
+      
+      for (let i = 0; i < 4; i++) {
+        const btn = document.getElementById(`answer-${i}`);
+        btn.textContent = q.answers[i];
+        btn.disabled = false;
+        btn.className = 'answer-btn px-6 py-4 bg-white border-2 border-blue-300 rounded-lg text-2xl font-semibold hover:bg-blue-50';
+      }
+      
+      document.getElementById('feedback').textContent = '';
+    }
+
+    function checkAnswer(index) {
+      const buttons = [0, 1, 2, 3].map(i => document.getElementById(`answer-${i}`));
+      buttons.forEach(btn => btn.disabled = true);
+      
+      if (index === correctIndex) {
+        buttons[index].classList.add('correct');
+        document.getElementById('feedback').innerHTML = '<span class="text-green-600">✓ Правильно!</span>';
+        correctAnswers++;
+      } else {
+        buttons[index].classList.add('incorrect');
+        buttons[correctIndex].classList.add('correct');
+        document.getElementById('feedback').innerHTML = '<span class="text-red-600">✗ Неправильно</span>';
+      }
+      
+      setTimeout(() => {
+        currentQuestion++;
+        if (currentQuestion < 10) {
+          showQuestion();
+        } else {
+          showResult();
+        }
+      }, 1500);
+    }
+
+    function showResult() {
+      document.getElementById('questionBlock').classList.add('hidden');
+      document.getElementById('resultBlock').classList.remove('hidden');
+      document.getElementById('finalScore').textContent = `${correctAnswers}/10`;
+      
+      let message = '';
+      if (correctAnswers === 10) {
+        message = 'Превосходно! Ты знаешь таблицу умножения на отлично!';
+      } else if (correctAnswers >= 7) {
+        message = 'Отличный результат! Продолжай тренироваться!';
+      } else if (correctAnswers >= 5) {
+        message = 'Неплохо! Еще немного практики и всё получится!';
+      } else {
+        message = 'Нужно больше практики. Не сдавайся!';
+      }
+      
+      document.getElementById('resultMessage').textContent = message;
+      saveResult(correctAnswers, 10);
+    }
+
+    function restartGame() {
+      currentQuestion = 0;
+      correctAnswers = 0;
+      generateQuestions();
+      document.getElementById('questionBlock').classList.remove('hidden');
+      document.getElementById('resultBlock').classList.add('hidden');
+      showQuestion();
+    }
+
+    function openSettings() {
+      document.getElementById('settingsPanel').classList.remove('hidden');
+      document.getElementById('gamePanel').classList.add('hidden');
+    }
+
+    function closeSettings() {
+      document.getElementById('settingsPanel').classList.add('hidden');
+      document.getElementById('gamePanel').classList.remove('hidden');
+      restartGame();
+    }
+
+    loadHistory();
+    selectNumber('all');
+    generateQuestions();
+    showQuestion();
+  </script>
+<script type="text/javascript" src="https://math-calc.github.io/main.js"></script>
+</body>
+</html>
