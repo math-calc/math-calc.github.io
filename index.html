@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://math-calc.github.io/">
-  <title>Математические калькуляторы онлайн - бесплатные инструменты расчета для школьников и студентов</title>
-  <meta name="description" content="Коллекция бесплатных математических калькуляторов для школьников: возведение в степень, дроби, проценты, площадь, объем и другие инструменты для решения задач.">
+  <title>Математический калькулятор онлайн - бесплатный инструмент расчета для школьников и студентов</title>
+  <meta name="description" content="Бесплатный онлайн калькулятор для школьников и студентов: возведение в степень, извлечение корня, скобки, проценты, история расчетов. Точные вычисления для математических задач.">
   <meta name="author" content="Команда Math Calc на Github">
   <link rel="icon" href="https://math-calc.github.io/favicon.svg" type="image/svg+xml">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
@@ -15,9 +15,9 @@
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "Математические калькуляторы",
+    "name": "Математический калькулятор онлайн",
     "url": "https://math-calc.github.io/",
-    "description": "Бесплатные онлайн калькуляторы для решения математических задач",
+    "description": "Бесплатный онлайн калькулятор для решения математических задач",
     "publisher": {
       "@type": "Organization",
       "name": "Math Calc на Github",
@@ -39,8 +39,8 @@
   {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    "name": "Математические калькуляторы",
-    "description": "Коллекция онлайн калькуляторов для школьников",
+    "name": "Математический калькулятор",
+    "description": "Бесплатный онлайн калькулятор для школьников и студентов: возведение в степень, извлечение корня, скобки, проценты, история расчетов. Точные вычисления для математических задач.",
     "itemListElement": [
       {
         "@type": "ListItem",
@@ -100,18 +100,161 @@
   </header>
   
   <main class="flex-grow max-w-6xl mx-auto p-4 sm:p-6 lg:p-8">
-    <section class="text-center mb-8">
-      <h1 class="text-3xl sm:text-4xl font-bold mb-3 text-gray-900">Математические калькуляторы онлайн</h1>
-      <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-4">
-        Бесплатные инструменты для быстрого решения математических задач. Все расчёты выполняются автоматически с пошаговыми объяснениями.
-      </p>
-      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 max-w-2xl mx-auto text-sm text-gray-700">
-        <p class="font-semibold mb-2">✓ Проверено экспертами</p>
-        <p>Все калькуляторы разработаны и проверены командой математиков и программистов. Расчёты выполнены с использованием проверенных алгоритмов на Python.</p>
+<section class="text-center mb-8">
+  <h1 class="text-3xl sm:text-4xl font-bold mb-3 text-gray-900">
+    Математический калькулятор онлайн с корнями и степенями
+  </h1>
+  
+  <div class="max-w-4xl mx-auto">
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      <strong>Бесплатный математический калькулятор онлайн</strong> для школьников и студентов с расширенными функциями: возведение в степень (x<sup>n</sup>), извлечение квадратного корня (√), операции со скобками, вычисление процентов. Все расчёты выполняются мгновенно с сохранением полной истории вычислений.
+    </p>
+    <!-- Калькулятор -->
+<section class="bg-white border border-gray-200 rounded-lg shadow-lg p-6 mb-8 max-w-2xl mx-auto">
+  <h2 class="text-2xl font-semibold mb-6 text-center text-gray-900">Быстрый калькулятор</h2>
+  
+  <!-- Дисплей -->
+  <div class="mb-4">
+    <div class="bg-gray-50 border-2 border-gray-300 rounded-lg p-4 min-h-[80px] flex flex-col justify-end">
+      <div class="text-gray-500 text-sm text-right mb-1" id="calc-expression"></div>
+      <div class="text-3xl font-bold text-right text-gray-900 break-all" id="calc-display">0</div>
+    </div>
+  </div>
+
+  <!-- Кнопки калькулятора -->
+  <div class="grid grid-cols-5 gap-2 mb-4">
+    <!-- Ряд 1 - Функции -->
+    <button class="calc-btn bg-purple-100 hover:bg-purple-200 text-purple-700 font-semibold py-3 rounded-lg transition text-xl" onclick="appendCalc('(')">
+      <span class="text-2xl">(</span>
+    </button>
+    <button class="calc-btn bg-purple-100 hover:bg-purple-200 text-purple-700 font-semibold py-3 rounded-lg transition text-xl" onclick="appendCalc(')')">
+      <span class="text-2xl">)</span>
+    </button>
+    <button class="calc-btn bg-purple-100 hover:bg-purple-200 text-purple-700 font-semibold py-3 rounded-lg transition" onclick="appendCalc('^')">
+      <span class="text-2xl">x<sup>n</sup></span>
+    </button>
+    <button class="calc-btn bg-purple-100 hover:bg-purple-200 text-purple-700 font-semibold py-3 rounded-lg transition" onclick="insertSqrt()">
+      <span class="text-2xl">√</span>
+    </button>
+    <button class="calc-btn bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-3 rounded-lg transition" onclick="clearCalc()">
+      <span class="text-xl">C</span>
+    </button>
+    
+    <!-- Ряд 2 -->
+    <button class="calc-btn bg-white hover:bg-gray-50 border border-gray-300 text-gray-900 font-semibold py-4 rounded-lg transition" onclick="appendCalc('7')">
+      <span class="text-2xl">7</span>
+    </button>
+    <button class="calc-btn bg-white hover:bg-gray-50 border border-gray-300 text-gray-900 font-semibold py-4 rounded-lg transition" onclick="appendCalc('8')">
+      <span class="text-2xl">8</span>
+    </button>
+    <button class="calc-btn bg-white hover:bg-gray-50 border border-gray-300 text-gray-900 font-semibold py-4 rounded-lg transition" onclick="appendCalc('9')">
+      <span class="text-2xl">9</span>
+    </button>
+    <button class="calc-btn bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 rounded-lg transition" onclick="appendCalc('/')">
+      <span class="text-2xl">÷</span>
+    </button>
+    <button class="calc-btn bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-4 rounded-lg transition" onclick="deleteLastCalc()">
+      <span class="text-xl">⌫</span>
+    </button>
+    
+    <!-- Ряд 3 -->
+    <button class="calc-btn bg-white hover:bg-gray-50 border border-gray-300 text-gray-900 font-semibold py-4 rounded-lg transition" onclick="appendCalc('4')">
+      <span class="text-2xl">4</span>
+    </button>
+    <button class="calc-btn bg-white hover:bg-gray-50 border border-gray-300 text-gray-900 font-semibold py-4 rounded-lg transition" onclick="appendCalc('5')">
+      <span class="text-2xl">5</span>
+    </button>
+    <button class="calc-btn bg-white hover:bg-gray-50 border border-gray-300 text-gray-900 font-semibold py-4 rounded-lg transition" onclick="appendCalc('6')">
+      <span class="text-2xl">6</span>
+    </button>
+    <button class="calc-btn bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 rounded-lg transition" onclick="appendCalc('*')">
+      <span class="text-2xl">×</span>
+    </button>
+    <button class="calc-btn bg-gray-200 hover:bg-gray-300 text-gray-700 font-semibold py-4 rounded-lg transition" onclick="appendCalc('%')">
+      <span class="text-2xl">%</span>
+    </button>
+    
+    <!-- Ряд 4 -->
+    <button class="calc-btn bg-white hover:bg-gray-50 border border-gray-300 text-gray-900 font-semibold py-4 rounded-lg transition" onclick="appendCalc('1')">
+      <span class="text-2xl">1</span>
+    </button>
+    <button class="calc-btn bg-white hover:bg-gray-50 border border-gray-300 text-gray-900 font-semibold py-4 rounded-lg transition" onclick="appendCalc('2')">
+      <span class="text-2xl">2</span>
+    </button>
+    <button class="calc-btn bg-white hover:bg-gray-50 border border-gray-300 text-gray-900 font-semibold py-4 rounded-lg transition" onclick="appendCalc('3')">
+      <span class="text-2xl">3</span>
+    </button>
+    <button class="calc-btn bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 rounded-lg transition" onclick="appendCalc('-')">
+      <span class="text-2xl">−</span>
+    </button>
+    <button class="calc-btn bg-green-500 hover:bg-green-600 text-white font-semibold py-4 rounded-lg transition row-span-2" onclick="calculateCalc()">
+      <span class="text-3xl">=</span>
+    </button>
+    
+    <!-- Ряд 5 -->
+    <button class="calc-btn bg-white hover:bg-gray-50 border border-gray-300 text-gray-900 font-semibold py-4 rounded-lg transition col-span-2" onclick="appendCalc('0')">
+      <span class="text-2xl">0</span>
+    </button>
+    <button class="calc-btn bg-white hover:bg-gray-50 border border-gray-300 text-gray-900 font-semibold py-4 rounded-lg transition" onclick="appendCalc('.')">
+      <span class="text-2xl">.</span>
+    </button>
+    <button class="calc-btn bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 rounded-lg transition" onclick="appendCalc('+')">
+      <span class="text-2xl">+</span>
+    </button>
+  </div>
+
+  <!-- История расчетов -->
+  <div class="border-t border-gray-200 pt-4">
+    <div class="flex justify-between items-center mb-3">
+      <h3 class="text-lg font-semibold text-gray-900">История расчетов</h3>
+      <button class="text-sm text-red-600 hover:text-red-700 font-medium" onclick="clearHistoryCalc()">Очистить</button>
+    </div>
+    <div id="calc-history" class="bg-gray-50 rounded-lg p-3 max-h-48 overflow-y-auto space-y-2">
+      <p class="text-gray-500 text-sm text-center">История расчетов пуста</p>
+    </div>
+  </div>
+</section>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-600 mb-4">
+      <div class="flex items-center justify-center">
+        <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+        <span>Работает без регистрации</span>
       </div>
-    </section>
+      <div class="flex items-center justify-center">
+        <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+        <span>История всех расчётов</span>
+      </div>
+      <div class="flex items-center justify-center">
+        <svg class="w-5 h-5 text-green-600 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+        <span>Поддержка клавиатуры</span>
+      </div>
+    </div>
+    
+    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 text-left">
+      <h2 class="font-semibold text-gray-900 mb-2 text-base">
+        ⚡ Возможности онлайн калькулятора:
+      </h2>
+      <ul class="text-sm text-gray-700 space-y-1">
+        <li>• <strong>Базовые операции:</strong> сложение, вычитание, умножение, деление</li>
+        <li>• <strong>Возведение в степень:</strong> вычисление x<sup>n</sup> для любых чисел (например, 2^10 = 1024)</li>
+        <li>• <strong>Квадратный корень:</strong> извлечение √ из положительных чисел</li>
+        <li>• <strong>Скобки:</strong> поддержка сложных математических выражений с приоритетом операций</li>
+        <li>• <strong>Проценты:</strong> быстрый расчёт процентов от числа</li>
+        <li>• <strong>История расчётов:</strong> автоматическое сохранение последних 20 вычислений в браузере</li>
+      </ul>
+    </div>
+    
+    <p class="text-sm text-gray-600 mt-4 italic">
+      Калькулятор использует проверенные математические алгоритмы и подходит для решения школьных задач, домашних заданий и повседневных вычислений. Все расчёты выполняются локально в браузере — ваши данные остаются конфиденциальными.
+    </p>
+  </div>
+</section>
 
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 max-w-2xl mx-auto text-sm text-gray-700">
+              <p class="font-semibold mb-2">✓ Проверено экспертами</p>
+              <p>Все калькуляторы разработаны и проверены командой математиков и программистов. Расчёты выполнены с использованием проверенных алгоритмов на Python.</p>
+            </div>
       <!-- Карточка 1: Возведение в степень -->
       <article class="bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 p-6" itemscope itemtype="https://schema.org/SoftwareApplication">
         <div class="flex items-center justify-center w-16 h-16 bg-blue-100 rounded-full mb-4 mx-auto">
@@ -374,7 +517,169 @@
       Последнее обновление: октябрь 2025 г. | Разработано командой Math Calc на Github
     </p>
   </footer>
+<script>
+let calcCurrentInput = '';
+let calcExpression = '';
+let calcLastResult = null;
+
+function updateCalcDisplay() {
+  const display = document.getElementById('calc-display');
+  const expression = document.getElementById('calc-expression');
+  display.textContent = calcCurrentInput || '0';
+  expression.textContent = calcExpression || '';
+}
+
+function appendCalc(value) {
+  if (calcLastResult !== null && '+-*/^'.includes(value)) {
+    calcExpression = calcLastResult + ' ' + value;
+    calcCurrentInput = '';
+    calcLastResult = null;
+  } else if (calcLastResult !== null) {
+    calcCurrentInput = value;
+    calcExpression = '';
+    calcLastResult = null;
+  } else {
+    if (value === '.' && calcCurrentInput.includes('.')) return;
+    calcCurrentInput += value;
+  }
+  updateCalcDisplay();
+}
+
+function insertSqrt() {
+  if (calcLastResult !== null) {
+    calcCurrentInput = '√(' + calcLastResult + ')';
+    calcLastResult = null;
+  } else {
+    calcCurrentInput += '√(';
+  }
+  updateCalcDisplay();
+}
+
+function clearCalc() {
+  calcCurrentInput = '';
+  calcExpression = '';
+  calcLastResult = null;
+  updateCalcDisplay();
+}
+
+function deleteLastCalc() {
+  calcCurrentInput = calcCurrentInput.slice(0, -1);
+  updateCalcDisplay();
+}
+
+function calculateCalc() {
+  try {
+    const fullExpression = calcExpression + ' ' + calcCurrentInput;
+    let expression = fullExpression.trim()
+      .replace(/×/g, '*')
+      .replace(/÷/g, '/')
+      .replace(/−/g, '-')
+      .replace(/\^/g, '**')
+      .replace(/√\(/g, 'Math.sqrt(');
+    
+    // Автоматически закрываем незакрытые скобки
+    const openBrackets = (expression.match(/\(/g) || []).length;
+    const closeBrackets = (expression.match(/\)/g) || []).length;
+    expression += ')'.repeat(openBrackets - closeBrackets);
+    
+    // Безопасное вычисление с Math функциями
+    const result = Function('"use strict"; return (' + expression + ')')();
+    
+    if (isNaN(result) || !isFinite(result)) {
+      throw new Error('Ошибка вычисления');
+    }
+    
+    const roundedResult = Math.round(result * 100000000) / 100000000;
+    
+    // Сохранение в историю
+    saveToHistoryCalc(fullExpression.trim(), roundedResult);
+    
+    calcLastResult = roundedResult;
+    calcCurrentInput = roundedResult.toString();
+    calcExpression = '';
+    updateCalcDisplay();
+  } catch (error) {
+    document.getElementById('calc-display').textContent = 'Ошибка';
+    setTimeout(() => {
+      clearCalc();
+    }, 1500);
+  }
+}
+
+function saveToHistoryCalc(expression, result) {
+  let history = JSON.parse(localStorage.getItem('calcHistory') || '[]');
+  const entry = {
+    expression: expression,
+    result: result,
+    timestamp: new Date().toLocaleString('ru-RU')
+  };
   
+  history.unshift(entry);
+  if (history.length > 20) history = history.slice(0, 20);
+  
+  localStorage.setItem('calcHistory', JSON.stringify(history));
+  displayHistoryCalc();
+}
+
+function displayHistoryCalc() {
+  const historyDiv = document.getElementById('calc-history');
+  const history = JSON.parse(localStorage.getItem('calcHistory') || '[]');
+  
+  if (history.length === 0) {
+    historyDiv.innerHTML = '<p class="text-gray-500 text-sm text-center">История расчетов пуста</p>';
+    return;
+  }
+  
+  historyDiv.innerHTML = history.map(entry => `
+    <div class="bg-white border border-gray-200 rounded p-2 text-sm hover:bg-gray-50 transition cursor-pointer" onclick="loadFromHistoryCalc('${entry.expression.replace(/'/g, "\\'")}')">
+      <div class="flex justify-between items-center">
+        <span class="text-gray-700">${entry.expression} =</span>
+        <span class="font-bold text-gray-900">${entry.result}</span>
+      </div>
+      <div class="text-xs text-gray-400 mt-1">${entry.timestamp}</div>
+    </div>
+  `).join('');
+}
+
+function loadFromHistoryCalc(expression) {
+  calcExpression = '';
+  calcCurrentInput = expression;
+  calcLastResult = null;
+  updateCalcDisplay();
+}
+
+function clearHistoryCalc() {
+  if (confirm('Очистить всю историю расчетов?')) {
+    localStorage.removeItem('calcHistory');
+    displayHistoryCalc();
+  }
+}
+
+// Поддержка клавиатуры
+document.addEventListener('keydown', (e) => {
+  if (e.key >= '0' && e.key <= '9' || e.key === '.') {
+    appendCalc(e.key);
+  } else if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+    appendCalc(e.key);
+  } else if (e.key === '(' || e.key === ')') {
+    appendCalc(e.key);
+  } else if (e.key === '^') {
+    appendCalc('^');
+  } else if (e.key === 'Enter' || e.key === '=') {
+    e.preventDefault();
+    calculateCalc();
+  } else if (e.key === 'Escape' || e.key === 'c' || e.key === 'C') {
+    clearCalc();
+  } else if (e.key === 'Backspace') {
+    e.preventDefault();
+    deleteLastCalc();
+  }
+});
+
+// Загрузка истории при загрузке страницы
+displayHistoryCalc();
+</script>  
 <script type="text/javascript" src="https://math-calc.github.io/main.js"></script>
 </body>
+
 </html>
